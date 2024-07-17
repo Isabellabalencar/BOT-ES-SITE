@@ -1,0 +1,67 @@
+<!--código para botão de questão 1-->
+
+<pre><code id="code-to-copy-1">def hello_world():
+    print("Hello, world!")
+</code></pre>
+<button id="copy-button-1" onclick="copyCode1(event)">Copiar Código</button>
+<div id="copy-confirmation-1">Copiado!</div>
+
+<script>
+function copyCode1(event) {
+    var code = document.getElementById("code-to-copy-1").innerText;
+    navigator.clipboard.writeText(code).then(function() {
+        showCopyConfirmation1(event);
+        changeButtonStyle1();
+    }, function(err) {
+        console.error("Erro ao copiar o código: ", err);
+    });
+}
+
+function showCopyConfirmation1(event) {
+    var confirmation = document.getElementById("copy-confirmation-1");
+    confirmation.style.display = 'block';
+    confirmation.style.left = event.pageX + 'px';
+    confirmation.style.top = event.pageY + 'px';
+    
+    setTimeout(function() {
+        confirmation.style.display = 'none';
+    }, 2000);
+}
+
+function changeButtonStyle1() {
+    var button = document.getElementById("copy-button-1");
+    button.innerText = 'Código Copiado!';
+    button.style.backgroundColor = '#28a745';
+    setTimeout(function() {
+        button.innerText = 'Copiar Código';
+        button.style.backgroundColor = '';
+    }, 2000);
+}
+</script>
+
+<style>
+#copy-confirmation-1 {
+    display: none;
+    position: absolute;
+    padding: 5px;
+    background: #28a745;
+    color: white;
+    border-radius: 3px;
+    font-size: 14px;
+    z-index: 1000;
+}
+
+#copy-button-1 {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#copy-button-1:hover {
+    background-color: #0056b3;
+}
+</style>
